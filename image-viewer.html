@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #fff;
+  }
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+</head>
+<body>
+  <img id="img" src="" alt="Preview">
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const imgSrc = params.get('img');
+    if (imgSrc) document.getElementById('img').src = imgSrc;
+  </script>
+</body>
+</html>

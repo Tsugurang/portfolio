@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    body { margin: 0; font-family: 'Pretendard', sans-serif; background: #fff; color: #fff; overflow: hidden; height: 100vh; }
+    .section { text-align: center; padding: 0rem 1rem; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; }
+    .mac-container { margin: 0 auto; background: #f5f5f5; border-radius: 20px; width: 90%; height: 90vh; overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */}
+    .mac-titlebar { height: 36px; background: #e0e0e0; display: flex; align-items: center; padding: 0 10px; }
+    .mac-buttons { display: flex; gap: 6px; }
+    .mac-buttons div, .window-buttons div { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
+    .close { background: #ff5f56; }
+    .minimize { background: #ffbd2e; }
+    .maximize { background: #27c93f; }
+    .mac-body { position: relative; width: 100%; height: 100%; padding: 3rem 4rem; box-sizing: border-box; }
+    .folder { position: absolute; text-align: center; cursor: grab; user-select: none; }
+    .folder img {filter: drop-shadow(0px 4px 4px #c3c3c3); width: 130px; }
+    .folder .label { color: #000; font-size: 0.9rem; margin-top: 0.5rem; }
+    .tab-bar { display: flex; gap: 6px; margin-left: 20px; }
+    .tab { background: #ccc;  /* 기존보다 밝은 회색 */padding: 5px 10px; border-radius: 4px 4px 0 0; cursor: pointer; color: #333; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;}
+
+    .tab.active { background: #fff; font-weight: bold; color: #000; }
+    .tab .close-btn { font-weight: bold; cursor: pointer; }
+    iframe.content-frame { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: none; z-index: 10; background: #fff; }
+    #fp-nav ul li a span, .fp-slidesNav ul li a span { background: #fff; }
+    .fp-watermark { display: none !important; } /* fullPage.js 하단 워터마크 제거 */
+    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeUp 1s ease-out forwards; animation-delay: 0.3s; }
+    .fp-table { flex-direction: row; display: block; }
+    @font-face {
+      font-family: 'Heading Pro Trial';
+      src: url('HeadingProTrial-Book.woff2') format('woff2'),
+           url('HeadingProTrial-Book.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Heading Pro Trial-Bold';
+      src: url('font/HeadingProTrial-Bold.woff2') format('woff2'),
+           url('font/HeadingProTrial-Bold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section#home,
+.section#about {
+  transition: opacity 1s ease, transform 1s ease; /* 더 강한 효과 */
+}
+.section#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 섹션 전체를 기준으로 중앙 */
+  background: radial-gradient(circle at center, rgba(0,0,0,0) 80%, rgba(0,0,0,0.5) 130%);
+  z-index: 1;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-image img {
+  height: auto;
+  object-fit: contain;
+  filter: none; /* 색상 반전 제거 필요 시 */
+}
+#fp-nav.black-dots ul li a span {
+  background: #000 !important;
+}
+.fp-overflow {
+  overflow: visible !important;
+}
+.section#projects .fp-overflow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+</style>
+</head>
+<body>
+<div id="fullpage">
+  <div class="section" id="home" style="display: flex; align-items: center; justify-content: flex-start; height: 100vh; padding-left: 8vw; background: radial-gradient(circle at center, #007bff, #00c6ff, #d9faff); text-align: left; overflow: hidden;">
+    <div class="fade-up" style="position: absolute; top: 20%; left: 8vw; transform: translateY(-50%);">
+      <h1 style="font-size: 3rem; font-weight: 600; margin-bottom: 16rem; margin-top: 0px; color: #202123;">2025<br><span style="font-size: 12rem; font-family: 'Heading Pro Trial'; color: #030303;">PORTFOLIO</span></h1>
+      <p style="font-size: 2rem; max-width: 600px; line-height: 1.7; font-weight: 700; color: #333;">JEONG CHAN HEE</p>
+    </div>
+  </div>
+  <div class="section" id="about">
+    <div class="about-image"><img src="aboutf.png" alt="About me"></div>
+  </div>
+  <div class="section" id="projects">
+          <h2></h2>
+    <div class="mac-container" id="macContainer">
+      <div class="mac-titlebar">
+        <div class="mac-buttons"><div class="close"></div><div class="minimize"></div><div class="maximize"></div></div>
+        <div class="tab-bar"><div class="tab active" data-link="home"><i class='bx bx-home'></i></div></div>
+      </div>
+      <div class="mac-body" id="macBody">
+        <iframe class="content-frame" id="contentFrame"></iframe>
+        <div class="folder" data-link="image-viewer.html?img=Typography.png"><img src="folderp.png" alt=""><div class="label">Typography</div></div>
+        <div class="folder" data-link="image-viewer2.html"><img src="folderp.png" alt=""><div class="label">UI/UX</div></div>
+        <div class="folder" data-link="image-viewer.html?img=Frame 9.png"><img src="folderp.png" alt=""><div class="label">Graphic</div></div>
+        <div class="folder" data-link="image-viewer.html?img=bx.png"><img src="folderp.png" alt=""><div class="label">BX</div></div>
+        <div class="folder" data-link="Web.html"><img src="folder.webp" alt=""><div class="label">Web</div></div>
+        <div class="folder" data-link="Interaction.html"><img src="folder.webp" alt=""><div class="label">Interaction</div></div>
+        <div class="folder" data-link="MotionGraphic.html"><img src="folder.webp" alt=""><div class="label">Motion Graphic</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="section" id="contact" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background: #17171b; color: #222; text-align: left;">
+    <p style="color: #fff; font-size: 2.5rem; margin-bottom: 20px;">함께 일할 그래픽 디자이너를 찾고 계신가요?</p>
+    <h1 style="color: #fff; font-size: 5.5rem; font-weight: 700; margin-top: 0rem; margin-bottom: 1rem;">chanhee.jeong0@gmail.com</h1>
+    <a href="mailto:jchsomang@naver.com" style="text-decoration: none; color: #5a3eff; font-weight: 600; display: flex; align-items: center; gap: 6px;">메일 보내기 ➔</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/fullpage.js/dist/fullpage.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const macBody=document.getElementById('macBody');
+  const folders=macBody.querySelectorAll('.folder');
+  const tabBar=document.querySelector('.tab-bar');
+  const contentFrame=document.getElementById('contentFrame');
+  const tabs={};
+  const placed=[];
+  const containerRect=macBody.getBoundingClientRect();
+  const folderSize=130,padding=20;
+
+  function isOverlapping(x,y){
+    return placed.some(pos=>Math.abs(pos.x-x)<folderSize+padding&&Math.abs(pos.y-y)<folderSize+padding);
+  }
+
+  folders.forEach(folder=>{
+    let x,y,tries=0;
+    do{
+      x=Math.random()*(containerRect.width-folderSize-padding*2)+padding;
+      y=Math.random()*(containerRect.height-folderSize-padding*2)+padding;
+      tries++;
+    }while(isOverlapping(x,y)&&tries<100);
+    folder.style.left=`${x}px`;folder.style.top=`${y}px`;placed.push({x,y});
+
+    folder.addEventListener('pointerdown',e=>{
+      e.preventDefault();const offsetX=e.clientX-folder.offsetLeft,offsetY=e.clientY-folder.offsetTop;
+      const onMove=ev=>{folder.style.left=`${ev.clientX-offsetX}px`;folder.style.top=`${ev.clientY-offsetY}px`;};
+      const onUp=()=>{document.removeEventListener('pointermove',onMove);document.removeEventListener('pointerup',onUp);};
+      document.addEventListener('pointermove',onMove);document.addEventListener('pointerup',onUp);
+    });
+
+    folder.addEventListener('dblclick',()=>{
+      const link=folder.getAttribute('data-link'),label=folder.querySelector('.label').textContent;
+      if(!tabs[link]){
+        const tab=document.createElement('div');tab.className='tab';tab.dataset.link=link;
+        tab.innerHTML=`${label} <span class="close-btn">x</span>`;
+        tab.querySelector('.close-btn').addEventListener('click',(e)=>{e.stopPropagation();tab.remove();delete tabs[link];const remaining=Object.keys(tabs);if(remaining.length)activateTab(remaining[0]);else activateTab('home');});
+        tab.addEventListener('click',()=>activateTab(link));
+        tabBar.appendChild(tab);tabs[link]=true;
+      }
+      activateTab(link);
+    });
+  });
+
+  function activateTab(link){
+    document.querySelectorAll('.tab').forEach(tab=>tab.classList.remove('active'));
+    const tab=document.querySelector(`.tab[data-link="${link}"]`);if(tab)tab.classList.add('active');
+    if(link==="home")contentFrame.style.display="none";else{contentFrame.src=link;contentFrame.style.display="block";}
+  }
+
+  document.querySelector('.tab[data-link="home"]').addEventListener('click',()=>activateTab("home"));
+});
+new fullpage('#fullpage', {
+  navigation: true,
+  navigationPosition: 'right',
+  scrollBar: false,
+  responsiveWidth: 768,
+  afterLoad: function(origin, destination){
+    const nav = document.querySelector('#fp-nav');
+    if (destination.index === 1 || destination.index === 2) { // 2번 또는 3번 섹션
+      nav.classList.add('black-dots');
+    } else {
+      nav.classList.remove('black-dots');
+    }
+  }
+});
+
+</script>
+</body>
+</html>
